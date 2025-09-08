@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+mlflow<3
+pandas
+numpy
+scikit-learn
+joblib
+pydantic
+dagshub
+docker
+python-dotenv
+pytest
+dvc
