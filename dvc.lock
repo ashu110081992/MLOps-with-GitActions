@@ -1,0 +1,46 @@
+schema: '2.0'
+stages:
+  data_collection:
+    cmd: python src/data_collection.py
+    deps:
+    - path: src/data_collection.py
+      hash: md5
+      md5: cd5a2e40c7615a9296b39abbfe98f446
+      size: 1960
+    params:
+      params.yaml:
+        data_collection.test_size: 0.2
+    outs:
+    - path: data/raw
+      hash: md5
+      md5: f508f5f2cfb3fcc116235f0993dd2e00.dir
+      size: 520443
+      nfiles: 2
+  data_prep:
+    cmd: python src/data_prep.py
+    deps:
+    - path: src/data_prep.py
+      hash: md5
+      md5: 395046431d9a8af14336c4159b727c36
+      size: 1797
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: b7b192701669b1e5efcb8878319ba70c.dir
+      size: 545356
+      nfiles: 2
+  model_building:
+    cmd: python model/model_building.py
+    deps:
+    - path: model/model_building.py
+      hash: md5
+      md5: da367dfcd7aa1aec4396ea0082d2df58
+      size: 1964
+    params:
+      params.yaml:
+        model_building.n_estimators: 1000
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: dc09be250fd2f7f1abe03375bd869ba1
+      size: 73608582

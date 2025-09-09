@@ -11,3 +11,5 @@ docker
 python-dotenv
 pytest
 dvc
+seaborn
+matplotlib
