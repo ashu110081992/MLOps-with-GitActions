@@ -5,29 +5,29 @@ stages:
     deps:
     - path: src/data_collection.py
       hash: md5
-      md5: cd5a2e40c7615a9296b39abbfe98f446
-      size: 1960
+      md5: d90c913c016e3663891617cb2c88f06b
+      size: 2017
     params:
       params.yaml:
         data_collection.test_size: 0.2
     outs:
     - path: data/raw
       hash: md5
-      md5: f508f5f2cfb3fcc116235f0993dd2e00.dir
-      size: 520443
+      md5: c0c2d65c14a603e91e029fda3c344a5c.dir
+      size: 522262
       nfiles: 2
   data_prep:
     cmd: python src/data_prep.py
     deps:
     - path: src/data_prep.py
       hash: md5
-      md5: 395046431d9a8af14336c4159b727c36
-      size: 1797
+      md5: 98d9d84e7f7a4ddcf17cce593f4746da
+      size: 1860
     outs:
     - path: data/processed
       hash: md5
-      md5: b7b192701669b1e5efcb8878319ba70c.dir
-      size: 545356
+      md5: e34c84b2d0f2a75442271cd6c5779b7c.dir
+      size: 546895
       nfiles: 2
   model_building:
     cmd: python model/model_building.py
