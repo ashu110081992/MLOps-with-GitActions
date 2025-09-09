@@ -5,7 +5,7 @@ from tkinter import messagebox
 import threading
 
 # Set the tracking URI to your DagsHub MLflow instance
-mlflow.set_tracking_uri("https://dagshub.com/bhattpriyang/mlops_project.mlflow") 
+mlflow.set_tracking_uri("https://dagshub.com/ashu110081992/MLOps-with-GitActions.mlflow") 
 
 # Specify the model name
 model_name = "Best Model"  # Registered model name
@@ -54,8 +54,8 @@ class PredictionApp(tk.Tk):
         try:
             # Create an MlflowClient to interact with the MLflow server
             client = mlflow.tracking.MlflowClient()
-            # Get the latest version of the model in the Production stage
-            versions = client.get_latest_versions(model_name, stages=["Production"])
+            # Get the latest version of the model in the Staging stage
+            versions = client.get_latest_versions(model_name, stages=["Staging"])
 
             if versions:
                 latest_version = versions[0].version
