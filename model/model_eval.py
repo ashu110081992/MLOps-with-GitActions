@@ -19,7 +19,7 @@ dagshub.init(repo_owner='ashu110081992', repo_name='MLOps-with-GitActions', mlfl
 
 # Set the experiment name in MLflow
 
-mlflow.set_experiment("DVC PIPELINE ")
+mlflow.set_experiment("MLFLOW PIPELINE")
 
 # Set the tracking URI for MLflow to log the experiment in DagsHub
 mlflow.set_tracking_uri("https://dagshub.com/ashu110081992/MLOps-with-GitActions.mlflow") 

@@ -27,3 +27,8 @@ stages:
     - model/model_eval.py
     outs:
     - reports/run_info.json
+  model_registration:
+    cmd: python model/model_reg.py
+    deps:
+    - model/model_reg.py
+    - reports/run_info.json
