@@ -1,6 +1,6 @@
 [core]
     remote = myremote
 ['remote "myremote"']
-    url = /Users/ashutoshdeoghare/Documents/dvc
+    url = C:\Users\ashu1\OneDrive\Desktop\Work\dvc
 ['remote "localremote"']
     url = C:\Users\ashu1\OneDrive\Desktop\Work\dvc

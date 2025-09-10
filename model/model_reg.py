@@ -3,22 +3,15 @@ from mlflow.tracking import MlflowClient
 import mlflow
 
 import dagshub, os
-# dagshub.init(repo_owner='ashu110081992', repo_name='MLOps-with-GitActions', mlflow=True)
-
-# # Set the experiment name in MLflow
-
-# mlflow.set_experiment("MLFLOW PIPELINE")
-
-# # Set the tracking URI for MLflow to log the experiment in DagsHub
-# mlflow.set_tracking_uri("https://dagshub.com/ashu110081992/MLOps-with-GitActions.mlflow") 
+#dagshub.init(repo_owner='ashu110081992', repo_name='MLOps-with-GitActions', mlflow=True)
 
 
-CI_Pipeline = os.getenv("CI_Pipeline")
-if not CI_Pipeline:
-    raise EnvironmentError("CI_Pipeline environment variable not set.")
+MLOPS_TOKEN = os.getenv("MLOPS_TOKEN")
+if not MLOPS_TOKEN:
+    raise EnvironmentError("MLOPS_TOKEN environment variable not set.")
 
-os.environ["MLFLOW_TRACKING_USERNAME"] = CI_Pipeline
-os.environ["MLFLOW_TRACKING_PASSSWORD"] = CI_Pipeline
+os.environ["MLFLOW_TRACKING_USERNAME"] = MLOPS_TOKEN
+os.environ["MLFLOW_TRACKING_PASSSWORD"] = MLOPS_TOKEN
 
 dagshub_url = "https://dagshub.com"
 repo_owner = "ashu110081992"
