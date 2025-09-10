@@ -21,12 +21,13 @@ MLOPS_TOKEN = os.getenv("MLOPS_TOKEN")
 if not MLOPS_TOKEN:
     raise EnvironmentError("MLOPS_TOKEN environment variable not set.")
 
-os.environ["MLFLOW_TRACKING_USERNAME"] = MLOPS_TOKEN
-os.environ["MLFLOW_TRACKING_PASSSWORD"] = MLOPS_TOKEN
-
 dagshub_url = "https://dagshub.com"
 repo_owner = "ashu110081992"
 repo_name = "MLOps-with-GitActions"
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = MLOPS_TOKEN
+os.environ["MLFLOW_TRACKING_PASSWORD"] = MLOPS_TOKEN
+
 
 mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
 mlflow.set_experiment("MLFLOW PIPELINE")
