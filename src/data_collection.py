@@ -43,7 +43,6 @@ def main():
 # data_path = os.path.join("data","raw")
     try:
         data = load_data(data_filepath)
-        print("Data loaded successfully")
         test_size = load_params(params_filepath)
         train_data,test_data = split_data(data, test_size)
 
