@@ -37,7 +37,7 @@ def save_data(df : pd.DataFrame, filepath: str) -> None:
         raise Exception(f"Error saving data to {filepath} :{e}")
     
 def main():
-    data_filepath = "https://github.com/ashu110081992/Dataset/blob/main/water_potability.csv"
+    data_filepath = "https://raw.githubusercontent.com/ashu110081992/Dataset/main/water_potability.csv"
     params_filepath = "params.yaml"
     raw_data_path = os.path.join("data","raw")
 # data_path = os.path.join("data","raw")
