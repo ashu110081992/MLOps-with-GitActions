@@ -60,8 +60,7 @@ class TestModelLoading(unittest.TestCase):
         if not versions:
             self.fail("No model versions found in Staging stage")
 
-        latest_version = versions[0].version
-        run_id = versions[0].run_id
+        latest_version = versions[0].run_id
         logged_model = f"runs:/{latest_version}/{model_name}"
 
         try:
