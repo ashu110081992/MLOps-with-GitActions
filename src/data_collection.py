@@ -4,7 +4,6 @@ import os
 from sklearn.model_selection import train_test_split
 import yaml
 
-
 def load_params(filepath : str) -> float:
     try:
         with open(filepath,"r") as file:
@@ -12,7 +11,6 @@ def load_params(filepath : str) -> float:
         return params["data_collection"]["test_size"]
     except Exception as e:
         raise Exception(f"Error loading parameters from {filepath}:{e}")
-
 
 #test_size = yaml.safe_load(open("params.yaml"))["data_collection"]["test_size"]
 
