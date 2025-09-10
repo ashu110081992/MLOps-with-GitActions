@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import pickle
-import json
+import json, os
 import mlflow
 import yaml
 import seaborn as sns
@@ -15,17 +15,31 @@ from mlflow.models import infer_signature
 
 # Initialize DagsHub for experiment tracking
 # Initialize DagsHub for experiment tracking
-dagshub.init(repo_owner='ashu110081992', repo_name='MLOps-with-GitActions', mlflow=True)
+# dagshub.init(repo_owner='ashu110081992', repo_name='MLOps-with-GitActions', mlflow=True)
 
-# Set the experiment name in MLflow
+# # Set the experiment name in MLflow
 
-mlflow.set_experiment("MLFLOW PIPELINE")
+# mlflow.set_experiment("MLFLOW PIPELINE")
+# mlflow.set_tracking_uri("https://dagshub.com/ashu110081992/MLOps-with-GitActions.mlflow") 
 
-# Set the tracking URI for MLflow to log the experiment in DagsHub
-mlflow.set_tracking_uri("https://dagshub.com/ashu110081992/MLOps-with-GitActions.mlflow") 
+
 
 
 #mlflow.set_experiment("water-potability-prediction")
+
+CI_Pipeline = os.getenv("CI_Pipeline")
+if not CI_Pipeline:
+    raise EnvironmentError("CI_Pipeline environment variable not set.")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = CI_Pipeline
+os.environ["MLFLOW_TRACKING_PASSSWORD"] = CI_Pipeline
+
+dagshub_url = "https://dagshub.com"
+repo_owner = "ashu110081992"
+repo_name = "MLOps-with-GitActions"
+
+mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
+mlflow.set_experiment("MLFLOW PIPELINE")
 
 def load_data(filepath: str) -> pd.DataFrame:
     try:

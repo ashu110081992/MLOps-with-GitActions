@@ -2,15 +2,32 @@ import json
 from mlflow.tracking import MlflowClient
 import mlflow
 
-import dagshub
-dagshub.init(repo_owner='ashu110081992', repo_name='MLOps-with-GitActions', mlflow=True)
+import dagshub, os
+# dagshub.init(repo_owner='ashu110081992', repo_name='MLOps-with-GitActions', mlflow=True)
 
-# Set the experiment name in MLflow
+# # Set the experiment name in MLflow
 
+# mlflow.set_experiment("MLFLOW PIPELINE")
+
+# # Set the tracking URI for MLflow to log the experiment in DagsHub
+# mlflow.set_tracking_uri("https://dagshub.com/ashu110081992/MLOps-with-GitActions.mlflow") 
+
+
+CI_Pipeline = os.getenv("CI_Pipeline")
+if not CI_Pipeline:
+    raise EnvironmentError("CI_Pipeline environment variable not set.")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = CI_Pipeline
+os.environ["MLFLOW_TRACKING_PASSSWORD"] = CI_Pipeline
+
+dagshub_url = "https://dagshub.com"
+repo_owner = "ashu110081992"
+repo_name = "MLOps-with-GitActions"
+
+mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
 mlflow.set_experiment("MLFLOW PIPELINE")
 
-# Set the tracking URI for MLflow to log the experiment in DagsHub
-mlflow.set_tracking_uri("https://dagshub.com/ashu110081992/MLOps-with-GitActions.mlflow") 
+
 # Load the run ID and model name from the saved JSON file
 reports_path = "reports/run_info.json"
 with open(reports_path, 'r') as file:

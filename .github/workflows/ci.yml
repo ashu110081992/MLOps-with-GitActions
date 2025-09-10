@@ -24,5 +24,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run DVC Pipeline
+        env:
+          CI_Pipeline: ${{secrets.CI_Pipeline}}
         run: |
           dvc repro
