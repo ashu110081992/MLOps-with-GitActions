@@ -40,9 +40,8 @@ def save_data(df : pd.DataFrame, filepath: str) -> None:
     except Exception as e:
         raise Exception(f"Error saving data to {filepath} :{e}")
     
-
 def main():
-    data_filepath = r"D:\OneDrive\Desktop\Ashu\data\water_potability.csv"
+    data_filepath = r"C:\Users\ashu1\OneDrive\Desktop\Work\Data\water_potability.csv"
     params_filepath = "params.yaml"
     raw_data_path = os.path.join("data","raw")
 # data_path = os.path.join("data","raw")
