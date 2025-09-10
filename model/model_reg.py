@@ -3,7 +3,7 @@ from mlflow.tracking import MlflowClient
 import mlflow
 
 import dagshub
-dagshub.init(repo_owner='ashu110081992', repo_name='mlops_project', mlflow=True)
+dagshub.init(repo_owner='ashu110081992', repo_name='MLOps-with-GitActions', mlflow=True)
 
 # Set the experiment name in MLflow
 

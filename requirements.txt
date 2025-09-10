@@ -13,3 +13,4 @@ pytest
 dvc
 seaborn
 matplotlib
+flake8

@@ -1,0 +1,28 @@
+name: CI Pipeline
+
+on: push
+
+jobs:
+  project_testing:
+    runs-on: ${{ matrix.os }}
+
+    stratergy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run DVC Pipeline
+        run: |
+          dvc repro
