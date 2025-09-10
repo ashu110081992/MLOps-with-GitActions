@@ -32,8 +32,6 @@ def split_data(data : pd.DataFrame, test_size: float) -> tuple[pd.DataFrame,pd.D
 
 #train_data, test_data = train_test_split(data, test_size= test_size, random_state=42)
 
-
-
 def save_data(df : pd.DataFrame, filepath: str) -> None:
     try:
         df.to_csv(filepath,index=False)
