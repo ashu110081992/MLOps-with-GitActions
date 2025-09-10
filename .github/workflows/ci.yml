@@ -25,6 +25,6 @@ jobs:
 
       - name: Run DVC Pipeline
         env:
-          CI_Pipeline: ${{secrets.CI_Pipeline}}
+          MLOPS_TOKEN: ${{secrets.MLOPS_TOKEN}}
         run: |
           dvc repro
