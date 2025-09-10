@@ -28,3 +28,9 @@ jobs:
           MLOPS_TOKEN: ${{secrets.MLOPS_TOKEN}}
         run: |
           dvc repro
+
+      - name: Run model Tests
+        env:
+          MLOPS_TOKEN: ${{secrets.MLOPS_TOKEN}}
+        run: |
+          python -m unittest tests/model_test.py
