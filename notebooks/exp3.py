@@ -16,10 +16,25 @@ import pickle
 import dagshub
 from sklearn.model_selection import train_test_split
 
-import dagshub
-dagshub.init(repo_owner='bhattpriyang', repo_name='mlops_project', mlflow=True)
-mlflow.set_experiment("Experiment 3")
-mlflow.set_tracking_uri("https://dagshub.com/bhattpriyang/mlops_project.mlflow") 
+import dagshub, os
+# dagshub.init(repo_owner='bhattpriyang', repo_name='mlops_project', mlflow=True)
+# mlflow.set_experiment("Experiment 3")
+# mlflow.set_tracking_uri("https://dagshub.com/bhattpriyang/mlops_project.mlflow") 
+
+
+CI_Pipeline = os.getenv("CI_Pipeline")
+if not CI_Pipeline:
+    raise EnvironmentError("CI_Pipeline environment variable not set.")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = CI_Pipeline
+os.environ["MLFLOW_TRACKING_PASSSWORD"] = CI_Pipeline
+
+dagshub_url = "https://dagshub.com"
+repo_owner = "ashu110081992"
+repo_name = "MLOps-with-GitActions"
+
+mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
+mlflow.set_experiment("MLFLOW PIPELINE")
 
 # Load and preprocess data
 data = pd.read_csv("D:/exp_track_mlflow1/data/water_potability.csv")
